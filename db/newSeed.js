@@ -1,3 +1,3 @@
 // seed showcase file
 // seed pictures file
-const faker = require('faker');
+// const faker = require('faker');

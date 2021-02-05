@@ -1,16 +1,21 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
+/* eslint-disable eqeqeq */
 const faker = require('faker');
 const fs = require('fs');
 
 // const fs = require("fs");
 
 const ConvertToCSV = (objArray) => {
-  let array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+  const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
   let str = '';
 
   for (let i = 0; i < array.length; i += 1) {
     let line = '';
     for (const index in array[i]) {
-      if (line != '') line += ',';
+      if (line != '') {
+        line += ',';
+      }
       line += array[i][index];
     }
     str += (`${line}\r\n`);
