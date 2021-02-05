@@ -1,8 +1,22 @@
-// use fs
-// use faker
-const ObjectsToCSV = require('objects-to-csv');
-// const fs = require("fs");
 const faker = require('faker');
+const fs = require('fs');
+
+// const fs = require("fs");
+
+const ConvertToCSV = (objArray) => {
+  let array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+  let str = '';
+
+  for (let i = 0; i < array.length; i += 1) {
+    let line = '';
+    for (const index in array[i]) {
+      if (line != '') line += ',';
+      line += array[i][index];
+    }
+    str += (`${line}\r\n`);
+  }
+  return str;
+};
 
 const showcases = [];
 
@@ -31,22 +45,34 @@ for (let i = 0; i < 1000000; i += 1) {
 const pictures = [];
 let j = 0;
 let counter = 0;
+
 for (let x = 0; x < 5000000; x += 1) {
   const picture = {
     picture_id: x,
     pic: faker.image.city(),
     showcase_id: j,
   };
-  counter += 1;
+
   if (counter === 5) {
     j += 1;
     counter = 0;
   }
+  counter += 1;
   pictures.push(picture);
 }
 
-const picsCSV = new ObjectsToCSV(pictures);
-const showcasesCSV = new ObjectsToCSV(showcases);
+// const jsonShowcases = JSON.stringify(showcases);
+// const showcasesCSV = ConvertToCSV(jsonShowcases);
 
-showcasesCSV.toDisk('./showcase.csv');
-picsCSV.toDisk('./pics.csv');
+const jsonPictures = JSON.stringify(pictures);
+const picturesCSV = ConvertToCSV(jsonPictures);
+
+// fs.writeFile('./test.csv', showcasesCSV, (err) => {
+//   if (err) throw err;
+//   console.log('The file has been saved!');
+// });
+
+fs.writeFile('./pic.csv', picturesCSV, (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+});
