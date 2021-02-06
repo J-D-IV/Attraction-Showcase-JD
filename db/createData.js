@@ -1,9 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable eqeqeq */
-const faker = require('faker');
-const fs = require('fs');
-
 // const file = fs.createWriteStream('/Users/jd/Desktop/test.csv');
 // const fs = require("fs");
 
