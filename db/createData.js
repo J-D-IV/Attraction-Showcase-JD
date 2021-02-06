@@ -4,6 +4,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
+const file = fs.createWriteStream('/Users/jd/Desktop/test.csv');
 // const fs = require("fs");
 
 const ConvertToCSV = (objArray) => {
@@ -26,6 +27,15 @@ const ConvertToCSV = (objArray) => {
 const showcases = [];
 
 for (let i = 0; i < 1000000; i += 1) {
+// for (let i = 1000000; i < 2000000; i += 1) {
+// for (let i = 2000000; i < 3000000; i += 1) {
+// for (let i = 3000000; i < 4000000; i += 1) {
+// for (let i = 4000000; i < 5000000; i += 1) {
+// for (let i = 5000000; i < 6000000; i += 1) {
+// for (let i = 6000000; i < 7000000; i += 1) {
+// for (let i = 7000000; i < 8000000; i += 1) {
+// for (let i = 8000000; i < 9000000; i += 1) {
+// for (let i = 9000000; i < 10000000; i += 1) {
   const showcase = {
     showcase_id: i,
     attractionTitle: faker.commerce.productName(),
@@ -48,10 +58,28 @@ for (let i = 0; i < 1000000; i += 1) {
 }
 
 const pictures = [];
-let j = 0;
+// let j = 0;
+// let j = 1000000;
+// let j = 2000000;
+// let j = 3000000;
+// let j = 4000000;
+// let j = 5000000;
+// let j = 6000000;
+// let j = 7000000;
+// let j = 8000000;
+let j = 9000000;
 let counter = 0;
 
-for (let x = 0; x < 5000000; x += 1) {
+// for (let x = 0; x < 5000000; x += 1) {
+// for (let x = 5000000; x < 10000000; x += 1) {
+// for (let x = 10000000; x < 15000000; x += 1) {
+// for (let x = 15000000; x < 20000000; x += 1) {
+// for (let x = 20000000; x < 25000000; x += 1) {
+// for (let x = 25000000; x < 30000000; x += 1) {
+// for (let x = 30000000; x < 35000000; x += 1) {
+// for (let x = 35000000; x < 40000000; x += 1) {
+// for (let x = 40000000; x < 45000000; x += 1) {
+for (let x = 45000000; x < 50000000; x += 1) {
   const picture = {
     picture_id: x,
     pic: faker.image.city(),
@@ -69,15 +97,45 @@ for (let x = 0; x < 5000000; x += 1) {
 // const jsonShowcases = JSON.stringify(showcases);
 // const showcasesCSV = ConvertToCSV(jsonShowcases);
 
-const jsonPictures = JSON.stringify(pictures);
-const picturesCSV = ConvertToCSV(jsonPictures);
+// file.write(showcasesCSV);
+// let writeOneMillionTimes = (writer, data, encoding, callback) => {
+//   let i = 1000000;
+//   write();
+//   function write() {
+//     let ok = true;
+//     do {
+//       i--;
+//       if (i === 0) {
+//         // Last time!
+//         writer.write(data, encoding, callback);
+//       } else {
+//         // See if we should continue, or wait.
+//         // Don't pass the callback, because we're not done yet.
+//         ok = writer.write(data, encoding);
+//       }
+//     } while (i > 0 && ok);
+//     if (i > 0) {
+//       // Had to stop early!
+//       // Write some more once it drains.
+//       writer.once('drain', write);
+//     }
+//   }
+// };
 
-// fs.writeFile('./test.csv', showcasesCSV, (err) => {
+// writeOneMillionTimes(file, showcasesCSV, 'utf8', (err) => {
+//   if (err) { console.log(err); }
+//   console.log('csv was finally made!');
+// });
+
+// fs.appendFile('./test.csv', showcasesCSV, (err) => {
 //   if (err) throw err;
 //   console.log('The file has been saved!');
 // });
 
-fs.writeFile('./pic.csv', picturesCSV, (err) => {
+const jsonPictures = JSON.stringify(pictures);
+const picturesCSV = ConvertToCSV(jsonPictures);
+
+fs.appendFile('./pic.csv', picturesCSV, (err) => {
   if (err) throw err;
   console.log('The file has been saved!');
 });
