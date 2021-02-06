@@ -4,7 +4,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const file = fs.createWriteStream('/Users/jd/Desktop/test.csv');
+// const file = fs.createWriteStream('/Users/jd/Desktop/test.csv');
 // const fs = require("fs");
 
 const ConvertToCSV = (objArray) => {
@@ -94,8 +94,8 @@ for (let x = 45000000; x < 50000000; x += 1) {
   pictures.push(picture);
 }
 
-// const jsonShowcases = JSON.stringify(showcases);
-// const showcasesCSV = ConvertToCSV(jsonShowcases);
+const jsonShowcases = JSON.stringify(showcases);
+const showcasesCSV = ConvertToCSV(jsonShowcases);
 
 // file.write(showcasesCSV);
 // let writeOneMillionTimes = (writer, data, encoding, callback) => {
@@ -127,15 +127,15 @@ for (let x = 45000000; x < 50000000; x += 1) {
 //   console.log('csv was finally made!');
 // });
 
-// fs.appendFile('./test.csv', showcasesCSV, (err) => {
-//   if (err) throw err;
-//   console.log('The file has been saved!');
-// });
-
-const jsonPictures = JSON.stringify(pictures);
-const picturesCSV = ConvertToCSV(jsonPictures);
-
-fs.appendFile('./pic.csv', picturesCSV, (err) => {
+fs.appendFile('./test.csv', showcasesCSV, (err) => {
   if (err) throw err;
   console.log('The file has been saved!');
 });
+
+// const jsonPictures = JSON.stringify(pictures);
+// const picturesCSV = ConvertToCSV(jsonPictures);
+
+// fs.appendFile('./pic.csv', picturesCSV, (err) => {
+//   if (err) throw err;
+//   console.log('The file has been saved!');
+// });
