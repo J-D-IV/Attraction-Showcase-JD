@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const showcase = require('./showcase');
+const showcase = require('./newShowcase');
 
 const app = express();
 
