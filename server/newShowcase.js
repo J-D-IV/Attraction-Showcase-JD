@@ -7,10 +7,10 @@ const showcase = express.Router();
 showcase.get('/api/showcase', (req, res) => {
   client.query('SELECT * FROM showcase WHERE ratio=1', (err, response) => {
     if (err) {
-      console.error(err);
-      return;
+      res.status(400).send(err);
+      // console.error(err);
     }
-    console.log(response.rows);
+    // console.log(response.rows);
     res.status(200).send(response);
   });
 });
