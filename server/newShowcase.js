@@ -30,7 +30,7 @@ showcase.get('/api/showcase/:id', (req, res) => {
 showcase.post('/api/showcase/:attractionId', (req, res) => {
   const { form } = req.body;
   const { attractionId } = req.params;
-  const obj = { ...form, attractionId };
+  const obj = { attractionId, ...form };
   client.query(`INSERT INTO improveForm (attraction_id, description, isOpen, suggestedDuration, address) VALUES (${obj})`, (err, response) => {
     if (err) {
       console.log(err);
