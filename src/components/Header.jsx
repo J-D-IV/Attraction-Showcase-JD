@@ -33,7 +33,7 @@ const Header = ({
     </div>
     <div className={css['ranking-share']}>
       <p className={css.ranking}>
-        #{current.relativeRanking[0]} of {current.relativeRanking[1]} things to do in {current.city}
+        #{current.attractionRank} of {current.totalRankings} things to do in {current.city}
       </p>
       <FiShare size={20} />
     </div>

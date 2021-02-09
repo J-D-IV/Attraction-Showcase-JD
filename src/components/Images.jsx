@@ -19,9 +19,10 @@ export default class Images extends React.Component {
   componentDidMount() {
     const { images } = this.props;
     const sliced = images.slice();
+    const attractionImgUrls = sliced.map((pic) => pic.pic);
     this.setState({
-      attractionImages: sliced,
-      displayedImage: sliced[0],
+      attractionImages: attractionImgUrls,
+      displayedImage: sliced[0].pic,
     });
   }
 

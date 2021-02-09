@@ -11,6 +11,7 @@ export default class Attraction extends React.Component {
     super(props);
     this.state = {
       current: null,
+      pics: [],
       likeHover: false,
       form: {
         description: '',
@@ -29,11 +30,16 @@ export default class Attraction extends React.Component {
 
   componentDidMount() {
     axios.get('http://localhost:3001/api/showcase')
-      .then(({ data }) => {
+      .then((result) => {
+        const attractions = result.data[0];
+        const pictures = result.data[1];
+        // console.log(attractions);
         this.setState({
-          current: data[1],
+          current: attractions[1],
+          pics: pictures,
         });
-      }).catch((err) => console.log('error GETTING all', err));
+      })
+      .catch((err) => console.log('error GETTING all', err));
   }
 
   handleFormChange(e) {
@@ -61,7 +67,7 @@ export default class Attraction extends React.Component {
     const { clickImproved, form, current } = this.state;
     const {
       description, address, isOpen, suggestedDuration,
-    } = current.overview;
+    } = current;
 
     this.setState({
       clickImproved: !clickImproved,
@@ -114,9 +120,12 @@ export default class Attraction extends React.Component {
 
   render() {
     const {
-      current, likeHover, form, clickImproved,
+      current, likeHover, form, clickImproved, pics,
     } = this.state;
     return (
+      // <div>
+      //   Hello
+      // </div>
       <>
         {current ? (
           <div className={css.attraction}>
@@ -127,7 +136,7 @@ export default class Attraction extends React.Component {
               likeHover={likeHover}
             />
             <Overview
-              overview={current.overview}
+              overview={current}
               form={form}
               clicked={clickImproved}
               openCloseForm={this.openCloseForm}
@@ -136,7 +145,7 @@ export default class Attraction extends React.Component {
               id={current._id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
-            <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
+            <Images images={pics} travelersChoice={current.travelersChoiceAward} />
           </div>
         ) : <div className={css.loading}>Loading...</div>}
       </>
