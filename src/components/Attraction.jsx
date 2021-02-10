@@ -84,10 +84,18 @@ export default class Attraction extends React.Component {
   submitImprovements(id, e) {
     e.preventDefault();
     const { form, current } = this.state;
-    if (JSON.stringify(form) === JSON.stringify(current.overview)) {
+    console.log(form);
+    const currentForm = {
+      description: current.description,
+      isopen: current.isOpen,
+      suggestedduration: current.suggestedDuration,
+      address: current.address,
+    };
+    if (JSON.stringify(form) === JSON.stringify(currentForm)) {
       console.log('Must Submit Improvements to Current Attraction Listing');
     } else {
-      axios.post(`/api/showcase/${id}`, { form })
+      console.log('this is the axios post id --', id);
+      axios.post(`/api/showcase/${id}`, form)
         .then(({ data }) => {
           this.openCloseForm();
           console.log(data.message);
@@ -142,7 +150,7 @@ export default class Attraction extends React.Component {
               openCloseForm={this.openCloseForm}
               handleFormChange={this.handleFormChange}
               submitImprovements={this.submitImprovements}
-              id={current._id} /* eslint-disable-line no-underscore-dangle */
+              id={current.showcase_id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
             <Images images={pics} travelersChoice={current.travelersChoiceAward} />

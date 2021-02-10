@@ -8,14 +8,14 @@ const client = new Client({
 });
 
 client.connect();
-const query = 'SELECT ratio FROM showcase WHERE showcase_id=9334244';
-client.query(query, (err, res) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  // console.log(res.rows[0]);
-  // client.end();
-});
+// const query = 'SELECT ratio FROM showcase WHERE showcase_id=9334244';
+// client.query(query, (err, res) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   // console.log(res.rows[0]);
+//   // client.end();
+// });
 
 module.exports = client;

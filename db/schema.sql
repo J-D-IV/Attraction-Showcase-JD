@@ -1,3 +1,6 @@
+/******************** SHOWCASE TABLE SCHEMA ************************/
+
+
 -- Table Definition ----------------------------------------------
 
 CREATE TABLE showcase (
@@ -25,6 +28,7 @@ CREATE UNIQUE INDEX showcase_pkey ON showcase(showcase_id int4_ops);
 
 
 
+/******************** PICTURE TABLE SCHEMA ************************/
 
 -- Table Definition ----------------------------------------------
 
