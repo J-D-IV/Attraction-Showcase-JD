@@ -7079,3 +7079,4 @@
 {"v":0,"level":30,"name":"newrelic","hostname":"Johns-MacBook-Pro-2.local","pid":60713,"time":"2021-02-10T19:07:23.242Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/3047888/applications/842867131","component":"collector_api"}
 {"v":0,"level":30,"name":"newrelic","hostname":"Johns-MacBook-Pro-2.local","pid":60713,"time":"2021-02-10T19:07:23.244Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"analytic_event_data\":833,\"custom_event_data\":83}}"}
 {"v":0,"level":30,"name":"newrelic","hostname":"Johns-MacBook-Pro-2.local","pid":60713,"time":"2021-02-10T19:07:23.248Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Johns-MacBook-Pro-2.local","pid":60713,"time":"2021-02-10T19:07:24.253Z","msg":"Starting initial 1000ms harvest."}
