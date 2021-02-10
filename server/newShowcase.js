@@ -55,7 +55,6 @@ showcase.post('/api/showcase/:attractionId', (req, res) => {
 
   const { attractionId } = req.params;
   const id = Number(attractionId);
-
   const text = 'INSERT INTO form (attraction_id, description, isopen, suggestedduration, address) VALUES ($1, $2, $3, $4, $5)';
   const values = [id, description, isOpen, suggestedDuration, address];
   client.query(text, values, (err, response) => {
