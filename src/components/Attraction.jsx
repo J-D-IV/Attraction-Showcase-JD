@@ -29,7 +29,7 @@ export default class Attraction extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/api/showcase')
+    axios.get('http://3.134.108.121:3001/api/showcase')
       .then((result) => {
         const attractions = result.data[0];
         const pictures = result.data[1];
@@ -95,7 +95,7 @@ export default class Attraction extends React.Component {
       console.log('Must Submit Improvements to Current Attraction Listing');
     } else {
       console.log('this is the axios post id --', id);
-      axios.post(`/api/showcase/${id}`, form)
+      axios.post(`http://3.134.108.121:3001/api/showcase/${id}`, form)
         .then(({ data }) => {
           this.openCloseForm();
           console.log(data.message);
@@ -119,7 +119,7 @@ export default class Attraction extends React.Component {
         likedStatus: !current.likedStatus,
       },
     }, () => {
-      axios.patch(`api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      axios.patch(`http://3.134.108.121:api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
         .catch((err) => {
           console.log('Error PATCH likedStatus ', err);
         });
